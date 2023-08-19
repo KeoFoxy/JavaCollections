@@ -1,5 +1,6 @@
 package org.example.carlist;
 
+import org.example.cararraylist.CarArrayList;
 import org.example.entity.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ class CarListTest {
 
     @BeforeEach
     public void setUp() throws Exception{
-        //init
+        carList = new CarArrayList();
         for(int i = 0; i < 100; i++) {
             carList.add(new Car(i, "Brand " + i));
         }
