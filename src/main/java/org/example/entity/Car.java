@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class Car {
@@ -30,5 +32,13 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(number, brand);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "number=" + number +
+                ", brand='" + brand + '\'' +
+                '}';
     }
 }
