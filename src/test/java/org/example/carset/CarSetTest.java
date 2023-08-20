@@ -42,9 +42,4 @@ class CarSetTest {
         assertFalse(carSet.remove(new Car(30,"Brand 30")));
         assertEquals(99, carSet.size());
     }
-
-
-    @Test
-    void clear() {
-    }
 }

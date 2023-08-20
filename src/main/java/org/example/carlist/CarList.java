@@ -14,4 +14,5 @@ public interface CarList extends CarCollection {
 
     boolean removeAt(int index);
     boolean remove(Car car);
+    boolean contains(Car car);
 }

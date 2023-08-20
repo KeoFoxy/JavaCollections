@@ -91,6 +91,18 @@ public class CarLinkedList implements CarList {
         return false;
     }
 
+    @Override
+    public boolean contains(Car car) {
+        Node node = first;
+        for(int i = 0; i < size; i++) {
+            if(node.value.equals(car)) {
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+
     private Node getNode(int index) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException();

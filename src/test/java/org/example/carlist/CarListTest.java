@@ -90,4 +90,11 @@ class CarListTest {
         Car carFromList = carList.get(100);
         assertEquals(carFromList.getBrand(), car.getBrand());
     }
+
+    @Test
+    public void addItemAndCheckIfListContainsAddedItem() {
+        Car car = new Car(18, "Porsche");
+        carList.add(car, 100);
+        assertTrue(carList.contains(car));
+    }
 }

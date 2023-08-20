@@ -65,6 +65,17 @@ public class CarArrayList implements CarList {
         return false;
     }
 
+    @Override
+    public boolean contains(Car car) {
+        for (int i = 0; i < size; i++) {
+            if(array[i].equals(car)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     private void checkIndex(int index) {
         if(index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
