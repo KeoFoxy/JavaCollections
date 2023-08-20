@@ -1,5 +1,7 @@
 package org.example.collection;
 
+import org.example.cararraylist.CarArrayList;
+import org.example.carhashset.CarHashSet;
 import org.example.carlinkedlist.CarLinkedList;
 
 import org.example.entity.Car;
@@ -15,7 +17,7 @@ public class CarCollectionTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        carCollection = new CarLinkedList();
+        carCollection = new CarHashSet();
         for (int i = 0; i < 100; i++) {
             carCollection.add(new Car(i, "Brand " + i));
         }
@@ -25,5 +27,14 @@ public class CarCollectionTest {
     public void contains() {
         assertTrue(carCollection.contains(new Car(20,"Brand 20")));
         assertFalse(carCollection.contains(new Car(20,"Brand 200")));
+    }
+
+    @Test
+    public void testForEach() {
+        int index = 0;
+        for(Car car: carCollection) {
+            index++;
+        }
+        assertEquals(carCollection.size(), index);
     }
 }

@@ -2,8 +2,10 @@ package org.example.cararraylist;
 
 import org.example.carlist.CarList;
 import org.example.entity.Car;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class CarArrayList implements CarList {
 
@@ -85,5 +87,24 @@ public class CarArrayList implements CarList {
     private void increaseArray() {
         if(size >= array.length)
             array = Arrays.copyOf(array, array.length * 2);
+    }
+
+    @NotNull
+    @Override
+    public Iterator<Car> iterator() {
+        return new Iterator<Car>() {
+
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Car next() {
+                return array[index++];
+            }
+        };
     }
 }

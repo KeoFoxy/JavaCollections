@@ -2,6 +2,9 @@ package org.example.carhashset;
 
 import org.example.carset.CarSet;
 import org.example.entity.Car;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
 
 public class CarHashSet implements CarSet {
 
@@ -37,6 +40,39 @@ public class CarHashSet implements CarSet {
             } else last = last.next;
         }
         return false;
+    }
+
+    @NotNull
+    @Override
+    public Iterator<Car> iterator() {
+        return new Iterator<Car>() {
+
+            int index = 0;
+            int arrayIndex = 0;
+            Entry entry;
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Car next() {
+                while(array[arrayIndex] == null) {
+                    arrayIndex++;
+                }
+                if(entry == null) {
+                    entry = array[arrayIndex];
+                }
+                Car result = entry.value;
+                entry = entry.next;
+                if(entry == null) {
+                    arrayIndex++;
+                }
+                index++;
+                return result;
+            }
+        };
     }
 
     @Override
