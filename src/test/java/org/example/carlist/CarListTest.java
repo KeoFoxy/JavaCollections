@@ -1,6 +1,7 @@
 package org.example.carlist;
 
 import org.example.cararraylist.CarArrayList;
+import org.example.carlinkedlist.CarLinkedList;
 import org.example.entity.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ class CarListTest {
 
     @BeforeEach
     public void setUp() throws Exception{
-        carList = new CarArrayList();
+        carList = new CarLinkedList();
         for(int i = 0; i < 100; i++) {
             carList.add(new Car(i, "Brand " + i));
         }
@@ -64,5 +65,29 @@ class CarListTest {
     public void methodGetReturnedRightValue() {
         Car car = carList.get(0);
         assertEquals("Brand 0", car.getBrand());
+    }
+
+    @Test
+    public void insertIntoMiddle() {
+        Car car = new Car(18, "Porsche");
+        carList.add(car, 50);
+        Car carFromList = carList.get(50);
+        assertEquals(carFromList.getBrand(), car.getBrand());
+    }
+
+    @Test
+    public void insertIntoFirstPosition() {
+        Car car = new Car(18, "Porsche");
+        carList.add(car, 0);
+        Car carFromList = carList.get(0);
+        assertEquals(carFromList.getBrand(), car.getBrand());
+    }
+
+    @Test
+    public void insertIntoLastPosition() {
+        Car car = new Car(18, "Porsche");
+        carList.add(car, 100);
+        Car carFromList = carList.get(100);
+        assertEquals(carFromList.getBrand(), car.getBrand());
     }
 }
